@@ -15,8 +15,8 @@ gulp.task('html', () => {
         .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('clean-dist', function() {
+gulp.task('clear', function() {
     del([
-    './dist'
-  ]);
+        './dist'
+    ]);
 });
