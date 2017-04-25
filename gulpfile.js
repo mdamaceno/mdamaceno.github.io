@@ -4,10 +4,10 @@ var rename = require('gulp-rename');
 var del = require('del');
 
 gulp.task('html', () => {
-    return gulp.src('./views/pages/*.hbs')
+    return gulp.src('./src/pages/*.hbs')
         .pipe(handlebars({}, {
             ignorePartials: true,
-            batch: ['./views/partials']
+            batch: ['./src/partials']
         }))
         .pipe(rename({
             extname: '.html'
@@ -17,6 +17,6 @@ gulp.task('html', () => {
 
 gulp.task('clear', function() {
     del([
-        './dist'
+        './dist/*'
     ]);
 });
