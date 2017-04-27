@@ -1,0 +1,20 @@
+{
+  "name": "marcodamaceno-blog",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Marco Damaceno <maadamaceno@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/mdamaceno/meusitepessoal",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
