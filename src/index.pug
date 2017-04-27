@@ -1,10 +1,8 @@
 doctype html
 html(lang='pt-BR')
-  head
-    meta(charset='UTF-8')
-    title Document
-    link(media='all', rel='stylesheet', href='assets/css/bundle.css')
+  include ./_partials/_head
   body
+    include ./_partials/_navbar
     h1 Teste Pug
 
     script(src='assets/js/bundle.js')
