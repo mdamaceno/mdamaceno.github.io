@@ -12,9 +12,9 @@ var production = !!util.env.production;
 gulp.task('build', ['pug', 'css', 'js'])
 
 gulp.task('pug', () => {
-    gulp.src(['./src/**/*.pug'])
+    gulp.src(['./src/!(_)**/!(_)*.pug'])
         .pipe(pug({
-            pretty: true
+            pretty: !production
         }))
         .pipe(gulp.dest('./dist'))
 })
