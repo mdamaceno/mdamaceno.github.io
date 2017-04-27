@@ -1,27 +1,16 @@
 {
-  "name": "marco-site",
+  "name": "gulp-pug",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build:dev": "gulp css && gulp js && gulp html",
-    "build:prod": "gulp css --production && gulp js --production && gulp html",
-    "server": "gulp"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {},
+  "license": "MIT",
   "devDependencies": {
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.0.4",
-    "gulp-compile-handlebars": "^0.6.1",
     "gulp-concat": "^2.6.1",
     "gulp-concat-css": "^2.3.0",
-    "gulp-rename": "^1.2.2",
+    "gulp-pug": "^3.3.0",
     "gulp-uglify": "^2.1.2",
-    "gulp-util": "^3.0.8",
-    "gulp-webserver": "^0.9.1"
+    "gulp-util": "^3.0.8"
   }
 }
