@@ -8,10 +8,11 @@ const cleanCSS = require('gulp-clean-css')
 const util = require('gulp-util')
 const webserver = require('gulp-webserver')
 const rename = require('gulp-rename')
+const sass = require('gulp-sass');
 
 var production = !!util.env.production
 
-gulp.task('build', ['pug', 'css', 'js'])
+gulp.task('build', ['pug', 'sass', 'js'])
 
 gulp.task('pug', () => {
     gulp.src(['./src/!(_)*.pug'])
@@ -24,15 +25,16 @@ gulp.task('pug', () => {
         .pipe(gulp.dest('./dist'))
 })
 
-gulp.task('css', () => {
+gulp.task('sass', () => {
     // build CSS
     del(['./dist/assets/css/**/*.css'])
     gulp
         .src([
             './src/assets/bower_components/skeleton/css/normalize.css',
             './src/assets/bower_components/skeleton/css/skeleton.css',
-            './src/assets/css/**/*.css'
+            './src/assets/sass/**/*.scss'
         ])
+        .pipe(sass.sync().on('error', sass.logError))
         .pipe(concatCss('bundle.css'))
         .pipe(production ? cleanCSS({ compatibility: 'ie8' }) : util.noop())
         .pipe(gulp.dest('./dist/assets/css'))
@@ -63,8 +65,8 @@ gulp.task('webserver', function() {
 
 gulp.task('watch', () => {
     gulp.watch('src/assets/js/**/*.js', ['js'])
-    gulp.watch('src/assets/css/**/*.css', ['css'])
+    gulp.watch('src/assets/sass/**/*.scss', ['sass'])
     gulp.watch('src/**/*.pug', ['pug'])
 })
 
-gulp.task('default', ['css', 'js', 'pug', 'webserver', 'watch'])
+gulp.task('default', ['sass', 'js', 'pug', 'webserver', 'watch'])
