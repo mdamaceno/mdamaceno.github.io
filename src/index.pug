@@ -1,8 +1,7 @@
-doctype html
-html(lang='pt-BR')
-  include ./_partials/_head
-  body
-    include ./_partials/_navbar
-    h1 Teste Pug
+extends ./_partials/_layout
 
-    script(src='assets/js/bundle.js')
+block content
+  .container
+    .row
+      .twelve.column
+        p Conteúdo

@@ -29,7 +29,8 @@ gulp.task('css', () => {
     del(['./dist/assets/css/**/*.css'])
     gulp
         .src([
-            './src/assets/bower_components/bootstrap/dist/css/bootstrap.min.css',
+            './src/assets/bower_components/skeleton/css/normalize.css',
+            './src/assets/bower_components/skeleton/css/skeleton.css',
             './src/assets/css/**/*.css'
         ])
         .pipe(concatCss('bundle.css'))
@@ -43,7 +44,6 @@ gulp.task('js', () => {
     gulp
         .src([
             './src/assets/bower_components/jquery/dist/jquery.min.js',
-            './src/assets/bower_components/bootstrap/dist/js/bootstrap.min.js',
             './src/assets/js/**/*.js'
         ])
         .pipe(concatJs('bundle.js'))
@@ -63,8 +63,8 @@ gulp.task('webserver', function() {
 
 gulp.task('watch', () => {
     gulp.watch('src/assets/js/**/*.js', ['js'])
-    gulp.watch('src/assets/css/**/*.js', ['css'])
-    gulp.watch('src/assets/**/*.pug', ['pug'])
+    gulp.watch('src/assets/css/**/*.css', ['css'])
+    gulp.watch('src/**/*.pug', ['pug'])
 })
 
 gulp.task('default', ['css', 'js', 'pug', 'webserver', 'watch'])
