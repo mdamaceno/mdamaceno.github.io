@@ -1,7 +1,25 @@
 extends ./_partials/_layout
 
-block content
-  .container
-    .row
-      .twelve.column
-        p Conteúdo
+append content
+  .row
+    .twelve.column
+      img(src="assets/images/marcodamaceno.jpg", style="float:right")
+
+      h1 Hi, my name is Marco!
+
+      p
+        | I'm a Brazilian software developer living in Juiz de Fora, Minas Gerais. Currently, I work at Emiolo.com and I work with Ruby, PHP and JavaScript.
+
+      h2 Some of my projects
+
+      p
+        a(href="https://internetidiomas.com.br/#/", target="_blank")
+          strong Internet Idiomas
+        br
+        | List of Youtube channelsthat teach languages like English, Spanish and others.
+
+      p
+        a(href="https://github.com/mdamaceno/autogit", target="_blank")
+          strong Autogit
+        br
+        | Script made in Bash with shortcuts for Git use.

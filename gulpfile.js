@@ -12,7 +12,7 @@ const sass = require('gulp-sass');
 
 var production = !!util.env.production
 
-gulp.task('build', ['pug', 'sass', 'js'])
+gulp.task('build', ['pug', 'fonts', 'sass', 'js', 'images'])
 
 gulp.task('pug', () => {
     gulp.src(['./src/!(_)*.pug'])
@@ -25,6 +25,14 @@ gulp.task('pug', () => {
         .pipe(gulp.dest('./dist'))
 })
 
+gulp.task('fonts', () => {
+    del(['./dist/assets/fonts/**/*'])
+    gulp.src([
+            './src/assets/bower_components/font-awesome/fonts/**/*'
+        ])
+        .pipe(gulp.dest('./dist/font-awesome/fonts'))
+})
+
 gulp.task('sass', () => {
     // build CSS
     del(['./dist/assets/css/**/*.css'])
@@ -32,6 +40,7 @@ gulp.task('sass', () => {
         .src([
             './src/assets/bower_components/skeleton/css/normalize.css',
             './src/assets/bower_components/skeleton/css/skeleton.css',
+            './src/assets/bower_components/font-awesome/css/font-awesome.css',
             './src/assets/sass/**/*.scss'
         ])
         .pipe(sass.sync().on('error', sass.logError))
@@ -45,12 +54,21 @@ gulp.task('js', () => {
     del(['./dist/assets/js/**/*.js'])
     gulp
         .src([
-            './src/assets/bower_components/jquery/dist/jquery.min.js',
             './src/assets/js/**/*.js'
         ])
         .pipe(concatJs('bundle.js'))
         .pipe(production ? uglify() : util.noop())
         .pipe(gulp.dest('./dist/assets/js'))
+})
+
+gulp.task('images', () => {
+    // Copy images
+    del(['./dist/assets/images/**/*.{jpg,jpeg,png,webp,svg}'])
+    gulp
+        .src([
+            './src/assets/images/**/*.{jpg,jpeg,png,webp,svg}'
+        ])
+        .pipe(gulp.dest('./dist/assets/images'))
 })
 
 gulp.task('webserver', function() {
@@ -67,6 +85,7 @@ gulp.task('watch', () => {
     gulp.watch('src/assets/js/**/*.js', ['js'])
     gulp.watch('src/assets/sass/**/*.scss', ['sass'])
     gulp.watch('src/**/*.pug', ['pug'])
+    gulp.watch('src/images/**/*.{jpg,jpeg,png,webp,svg}', ['images'])
 })
 
-gulp.task('default', ['sass', 'js', 'pug', 'webserver', 'watch'])
+gulp.task('default', ['sass', 'js', 'pug', 'fonts', 'images', 'webserver', 'watch'])
