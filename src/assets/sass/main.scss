@@ -6,19 +6,19 @@ html {
 }
 
 body {
-    min-height: 100%;
     display: flex;
+    min-height: 100vh;
     flex-direction: column;
 }
 
 .container {
     flex: 1;
+    padding: 20px 0;
     max-width: 780px;
 }
 
 .navbar {
     padding: 1.5rem 0;
-    margin-bottom: 2rem;
     background: #333;
     h1 {
         margin: 0;
